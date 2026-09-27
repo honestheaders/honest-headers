@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Honest Headers</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <img src="icons/icon32.png" width="20" height="20" alt="">
+      <span>Honest Headers</span>
+    </div>
+    <label class="switch" data-i18n-title="pauseTitle">
+      <input type="checkbox" id="enabledToggle">
+      <span class="slider"></span>
+      <span class="switch-label" id="enabledLabel"></span>
+    </label>
+  </header>
+
+  <div id="errorBanner" class="banner" hidden></div>
+
+  <section class="profile-bar">
+    <select id="profileSelect" aria-label="Profile"></select>
+    <button class="icon-btn" id="addProfile" data-i18n-title="newProfile">＋</button>
+    <button class="icon-btn" id="renameProfile" data-i18n-title="renameProfile">✎</button>
+    <button class="icon-btn" id="duplicateProfile" data-i18n-title="duplicateProfile">⧉</button>
+    <button class="icon-btn danger" id="deleteProfile" data-i18n-title="deleteProfile">🗑</button>
+  </section>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="requestHeaders" role="tab"><span data-i18n="tabRequest"></span> <b class="count" id="countRequestHeaders"></b></button>
+    <button class="tab" data-tab="responseHeaders" role="tab"><span data-i18n="tabResponse"></span> <b class="count" id="countResponseHeaders"></b></button>
+    <button class="tab" data-tab="urlFilters" role="tab"><span data-i18n="tabFilters"></span> <b class="count" id="countUrlFilters"></b></button>
+  </nav>
+
+  <p class="hint" id="tabHint"></p>
+  <div id="rows" class="rows"></div>
+  <button class="add-btn" id="addRow"></button>
+
+  <datalist id="commonHeaders">
+    <option value="Authorization"><option value="Cookie"><option value="User-Agent"><option value="Accept-Language">
+    <option value="Referer"><option value="Origin"><option value="Cache-Control"><option value="X-Forwarded-For">
+    <option value="X-Requested-With"><option value="Content-Type"><option value="Access-Control-Allow-Origin">
+    <option value="Access-Control-Allow-Headers"><option value="Access-Control-Allow-Methods"><option value="Content-Security-Policy">
+    <option value="X-Frame-Options"><option value="Set-Cookie">
+  </datalist>
+
+  <footer class="bottom">
+    <span class="trust" data-i18n="trustLine"></span>
+    <a href="#" id="openOptions" data-i18n="importExport"></a>
+  </footer>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

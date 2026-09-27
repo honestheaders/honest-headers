@@ -1,0 +1,33 @@
+:root {
+  --bg: #f6f7f9; --card: #ffffff; --text: #111827; --muted: #6b7280; --border: #e1e4e8;
+  --accent: #2563eb; --accent-soft: #e8efff; --ok: #15803d; --danger: #dc2626;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #111315; --card: #1b1e22; --text: #e8eaed; --muted: #9aa0a6; --border: #30343a;
+    --accent: #6ea0ff; --accent-soft: #1f2b45; --ok: #4ade80; --danger: #f87171; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.6 system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif; }
+main { max-width: 720px; margin: 0 auto; padding: 40px 20px 60px; }
+header { display: flex; gap: 14px; align-items: center; margin-bottom: 24px; }
+h1 { margin: 0; font-size: 24px; }
+.sub { margin: 2px 0 0; color: var(--muted); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; }
+h2 { margin: 0 0 6px; font-size: 17px; }
+p { margin: 0 0 10px; }
+.steps { margin: 0 0 14px; padding-left: 22px; color: var(--muted); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--card); color: var(--text); font: inherit; cursor: pointer; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+details { margin-top: 14px; }
+summary { cursor: pointer; color: var(--accent); }
+textarea { width: 100%; margin: 10px 0; padding: 10px; border: 1px solid var(--border); border-radius: 8px;
+  background: var(--bg); color: var(--text); font: 12.5px ui-monospace, Menlo, Consolas, monospace; }
+.result { margin-top: 12px; min-height: 1.4em; font-weight: 600; }
+.result.ok { color: var(--ok); }
+.result.err { color: var(--danger); }
+.privacy { margin: 0; padding-left: 20px; }
+.foot { color: var(--muted); font-size: 13px; text-align: center; margin-top: 24px; }

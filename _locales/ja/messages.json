@@ -1,0 +1,195 @@
+{
+  "extName": {
+    "message": "Honest Headers – HTTPヘッダー編集"
+  },
+  "extDescription": {
+    "message": "HTTPリクエスト/レスポンスヘッダーを追加・変更・削除。追跡なし、データ収集なし、ソース公開。ModHeaderのプロファイルを読み込めます。"
+  },
+  "active": {
+    "message": "有効"
+  },
+  "paused": {
+    "message": "一時停止"
+  },
+  "pauseTitle": {
+    "message": "すべてのヘッダー変更をオン/オフ"
+  },
+  "newProfile": {
+    "message": "新しいプロファイル"
+  },
+  "renameProfile": {
+    "message": "名前を変更"
+  },
+  "duplicateProfile": {
+    "message": "複製"
+  },
+  "deleteProfile": {
+    "message": "プロファイルを削除"
+  },
+  "confirmDelete": {
+    "message": "もう一度クリックすると削除します"
+  },
+  "profileN": {
+    "message": "プロファイル $1",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "copyOf": {
+    "message": "$1(コピー)",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabRequest": {
+    "message": "リクエスト"
+  },
+  "tabResponse": {
+    "message": "レスポンス"
+  },
+  "tabFilters": {
+    "message": "URLフィルター"
+  },
+  "hintRequest": {
+    "message": "ブラウザからサイトへ送るヘッダー。値を空にするとそのヘッダーを削除します。"
+  },
+  "hintResponse": {
+    "message": "サイトからブラウザへ返るヘッダー。値を空にするとそのヘッダーを削除します。"
+  },
+  "hintFilters": {
+    "message": "一致するURLだけに適用します(正規表現)。フィルターなし=すべてのサイト。"
+  },
+  "addHeader": {
+    "message": "+ ヘッダーを追加"
+  },
+  "addFilter": {
+    "message": "+ URLフィルターを追加"
+  },
+  "namePlaceholder": {
+    "message": "ヘッダー名"
+  },
+  "valuePlaceholder": {
+    "message": "値(空=削除)"
+  },
+  "filterPlaceholder": {
+    "message": "例: ^https://api\\.example\\.com/"
+  },
+  "enableRow": {
+    "message": "この行をオン/オフ"
+  },
+  "deleteRow": {
+    "message": "削除"
+  },
+  "invalidName": {
+    "message": "ヘッダー名にスペースや : ( ) , ; などの記号は使えません"
+  },
+  "invalidValue": {
+    "message": "値に改行や制御文字は使えません"
+  },
+  "emptyRemoves": {
+    "message": "値が空なので、このヘッダーは削除されます"
+  },
+  "badRegex": {
+    "message": "URLフィルターの書き方が正しくないため、直すまで何も適用していません: $1",
+    "placeholders": {
+      "p": {
+        "content": "$1"
+      }
+    }
+  },
+  "applyError": {
+    "message": "Chromeがルールを受け付けなかったため、何も適用していません: $1",
+    "placeholders": {
+      "e": {
+        "content": "$1"
+      }
+    }
+  },
+  "trustLine": {
+    "message": "データは外部に一切送信しません。追跡なし。"
+  },
+  "importExport": {
+    "message": "読み込み / 書き出し"
+  },
+  "optionsSub": {
+    "message": "読み込み・書き出し・プライバシー"
+  },
+  "importTitle": {
+    "message": "読み込み(ModHeaderからの移行にも対応)"
+  },
+  "importBody": {
+    "message": "ModHeaderやHonest Headersのバックアップからプロファイルを読み込みます。今あるプロファイルはそのまま残り、横に追加されます。"
+  },
+  "importStep1": {
+    "message": "ModHeaderがまだ手元にある場合: プロファイルのメニューから「Export」を選び、JSONファイルを保存します。"
+  },
+  "importStep2": {
+    "message": "下の「ファイルを選ぶ」を押して、そのJSONファイルを選びます。"
+  },
+  "importStep3": {
+    "message": "Honest Headersのポップアップでプロファイルを確認し、使いたいものを選びます。"
+  },
+  "chooseFile": {
+    "message": "ファイルを選ぶ…"
+  },
+  "pasteInstead": {
+    "message": "JSONの文字を貼り付けて読み込む"
+  },
+  "importPasted": {
+    "message": "貼り付けた内容を読み込む"
+  },
+  "importDone": {
+    "message": "$2 から $1 件のプロファイルを読み込みました。ポップアップで選ぶと有効になります。",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      },
+      "s": {
+        "content": "$2"
+      }
+    }
+  },
+  "importBadJson": {
+    "message": "正しいJSONファイルではないようです。"
+  },
+  "importNothing": {
+    "message": "ファイルの中にヘッダーやプロファイルが見つかりませんでした。"
+  },
+  "importFull": {
+    "message": "プロファイルが上限の50件に達しています。先にいくつか削除してください。"
+  },
+  "importTooBig": {
+    "message": "ファイルが大きすぎます(2MB超)。"
+  },
+  "exportTitle": {
+    "message": "バックアップ"
+  },
+  "exportBody": {
+    "message": "すべてのプロファイルをJSONファイルに保存します。別のパソコンで読み込むこともできます。"
+  },
+  "exportBtn": {
+    "message": "バックアップをダウンロード"
+  },
+  "privacyTitle": {
+    "message": "プライバシーの約束"
+  },
+  "privacy1": {
+    "message": "ヘッダーやプロファイルは、このブラウザの中だけに保存されます。"
+  },
+  "privacy2": {
+    "message": "拡張機能が自分から通信することはありません。分析・広告・外部プログラムの読み込みは一切なし。"
+  },
+  "privacy3": {
+    "message": "Chrome標準のルール機能(declarativeNetRequest)だけを使い、ページの中身は読みません。"
+  },
+  "privacy4": {
+    "message": "ソースコードをすべて公開しているので、誰でも確認できます。"
+  },
+  "importSkipped": {
+    "message": "ModHeader独自の設定(除外フィルターやCookieのルールなど)の一部は読み込めませんでした。使う前にプロファイルの中身を確認してください。"
+  }
+}

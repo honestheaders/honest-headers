@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Honest Headers</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <header>
+      <img src="icons/icon48.png" width="40" height="40" alt="">
+      <div>
+        <h1>Honest Headers</h1>
+        <p class="sub" data-i18n="optionsSub"></p>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2 data-i18n="importTitle"></h2>
+      <p data-i18n="importBody"></p>
+      <ol class="steps">
+        <li data-i18n="importStep1"></li>
+        <li data-i18n="importStep2"></li>
+        <li data-i18n="importStep3"></li>
+      </ol>
+      <div class="actions">
+        <label class="btn primary">
+          <span data-i18n="chooseFile"></span>
+          <input type="file" id="importFile" accept=".json,application/json" hidden>
+        </label>
+      </div>
+      <details>
+        <summary data-i18n="pasteInstead"></summary>
+        <textarea id="importText" rows="6" spellcheck="false"></textarea>
+        <button class="btn" id="importPaste" data-i18n="importPasted"></button>
+      </details>
+      <p id="importResult" class="result" role="status"></p>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="exportTitle"></h2>
+      <p data-i18n="exportBody"></p>
+      <div class="actions">
+        <button class="btn" id="exportBtn" data-i18n="exportBtn"></button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="privacyTitle"></h2>
+      <ul class="privacy">
+        <li data-i18n="privacy1"></li>
+        <li data-i18n="privacy2"></li>
+        <li data-i18n="privacy3"></li>
+        <li data-i18n="privacy4"></li>
+      </ul>
+    </section>
+
+    <p class="foot">Honest Headers · Honest Tools · v<span id="ver"></span></p>
+  </main>
+  <script type="module" src="options.js"></script>
+</body>
+</html>

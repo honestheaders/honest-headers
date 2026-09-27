@@ -1,0 +1,195 @@
+{
+  "extName": {
+    "message": "Honest Headers – Modify HTTP Headers"
+  },
+  "extDescription": {
+    "message": "Add, change or remove HTTP request and response headers. No tracking, no data collection, open source. Imports ModHeader profiles."
+  },
+  "active": {
+    "message": "Active"
+  },
+  "paused": {
+    "message": "Paused"
+  },
+  "pauseTitle": {
+    "message": "Turn all header changes on or off"
+  },
+  "newProfile": {
+    "message": "New profile"
+  },
+  "renameProfile": {
+    "message": "Rename profile"
+  },
+  "duplicateProfile": {
+    "message": "Duplicate profile"
+  },
+  "deleteProfile": {
+    "message": "Delete profile"
+  },
+  "confirmDelete": {
+    "message": "Click again to delete this profile"
+  },
+  "profileN": {
+    "message": "Profile $1",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "copyOf": {
+    "message": "$1 (copy)",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabRequest": {
+    "message": "Request headers"
+  },
+  "tabResponse": {
+    "message": "Response headers"
+  },
+  "tabFilters": {
+    "message": "URL filters"
+  },
+  "hintRequest": {
+    "message": "Sent from your browser to the site. Leave the value empty to remove a header."
+  },
+  "hintResponse": {
+    "message": "Sent from the site back to your browser. Leave the value empty to remove a header."
+  },
+  "hintFilters": {
+    "message": "Only apply headers on matching URLs (regular expression). No filters = every site."
+  },
+  "addHeader": {
+    "message": "+ Add header"
+  },
+  "addFilter": {
+    "message": "+ Add URL filter"
+  },
+  "namePlaceholder": {
+    "message": "Header name"
+  },
+  "valuePlaceholder": {
+    "message": "Value (empty = remove)"
+  },
+  "filterPlaceholder": {
+    "message": "e.g. ^https://api\\.example\\.com/"
+  },
+  "enableRow": {
+    "message": "Enable or disable this row"
+  },
+  "deleteRow": {
+    "message": "Delete"
+  },
+  "invalidName": {
+    "message": "Header names can't contain spaces or special characters like : ( ) , ;"
+  },
+  "invalidValue": {
+    "message": "Values can't contain line breaks or control characters"
+  },
+  "emptyRemoves": {
+    "message": "Empty value: this header will be removed"
+  },
+  "badRegex": {
+    "message": "This URL filter isn't a valid pattern, so nothing is applied until it's fixed: $1",
+    "placeholders": {
+      "p": {
+        "content": "$1"
+      }
+    }
+  },
+  "applyError": {
+    "message": "Chrome rejected the rules, so nothing is applied: $1",
+    "placeholders": {
+      "e": {
+        "content": "$1"
+      }
+    }
+  },
+  "trustLine": {
+    "message": "Nothing leaves your browser. No tracking."
+  },
+  "importExport": {
+    "message": "Import / Export"
+  },
+  "optionsSub": {
+    "message": "Import, export and privacy"
+  },
+  "importTitle": {
+    "message": "Import (including from ModHeader)"
+  },
+  "importBody": {
+    "message": "Bring your profiles over from ModHeader or from an Honest Headers backup. Imported profiles are added next to your existing ones."
+  },
+  "importStep1": {
+    "message": "If you still have ModHeader somewhere: open it, go to the profile menu and choose Export, then save the JSON file."
+  },
+  "importStep2": {
+    "message": "Click “Choose file” below and pick that JSON file."
+  },
+  "importStep3": {
+    "message": "Check the profiles in the Honest Headers popup and switch on the one you want."
+  },
+  "chooseFile": {
+    "message": "Choose file…"
+  },
+  "pasteInstead": {
+    "message": "Or paste JSON text instead"
+  },
+  "importPasted": {
+    "message": "Import pasted text"
+  },
+  "importDone": {
+    "message": "Imported $1 profile(s) from $2. Choose one in the popup to switch it on.",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      },
+      "s": {
+        "content": "$2"
+      }
+    }
+  },
+  "importBadJson": {
+    "message": "That doesn't look like a valid JSON file."
+  },
+  "importNothing": {
+    "message": "No headers or profiles were found in that file."
+  },
+  "importFull": {
+    "message": "You already have the maximum of 50 profiles. Delete some first."
+  },
+  "importTooBig": {
+    "message": "That file is too large (over 2 MB)."
+  },
+  "exportTitle": {
+    "message": "Back up"
+  },
+  "exportBody": {
+    "message": "Save all profiles as a JSON file. You can import it again on another computer."
+  },
+  "exportBtn": {
+    "message": "Download backup"
+  },
+  "privacyTitle": {
+    "message": "Privacy promise"
+  },
+  "privacy1": {
+    "message": "Your headers and profiles are stored only in this browser."
+  },
+  "privacy2": {
+    "message": "The extension makes no network requests of its own: no analytics, no ads, no remote code."
+  },
+  "privacy3": {
+    "message": "It only uses Chrome's built-in rule system (declarativeNetRequest), which changes headers without reading page content."
+  },
+  "privacy4": {
+    "message": "The full source code is public, so anyone can check this."
+  },
+  "importSkipped": {
+    "message": "Some ModHeader-only settings (for example exclude filters or cookie rules) were skipped — please check the imported profiles before switching one on."
+  }
+}
