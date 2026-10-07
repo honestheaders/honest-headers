@@ -14,7 +14,7 @@ A small, private Chrome extension to add, change or remove HTTP request and resp
 - **Request types** – XHR/fetch only, pages only, scripts/CSS/images only, or WebSocket only
 - **Auto-off timer** – pause automatically after 15 minutes to 8 hours
 
-Pro is unlocked with a key you type in the options page. The key is checked on your own computer (SHA-256 compare in `lib/license.js`); nothing is sent anywhere. Keys are sold at https://honest-tools.booth.pm/.
+Pro is unlocked with a key you type in the options page. The key is checked on your own computer (SHA-256 compare in `lib/license.js`); nothing is sent anywhere. Keys are sold on [Gumroad](https://honesttools.gumroad.com/l/rixjq).
 - **No data collection, no analytics, no ads, no remote code.** The extension makes no network requests of its own.
 
 ## How it works
