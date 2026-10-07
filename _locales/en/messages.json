@@ -191,5 +191,121 @@
   },
   "importSkipped": {
     "message": "Some ModHeader-only settings (for example exclude filters or cookie rules) were skipped — please check the imported profiles before switching one on."
+  },
+  "cmdToggle": {
+    "message": "Turn all header changes on/off"
+  },
+  "tabExclude": {
+    "message": "Exclude"
+  },
+  "tabRedirects": {
+    "message": "Redirects"
+  },
+  "hintExclude": {
+    "message": "Never apply anything to URLs that match these (regex). Exclusions win over everything else."
+  },
+  "hintRedirects": {
+    "message": "Send matching requests to another URL. Use \\1, \\2 for parts captured with ( ). Be careful not to create a loop."
+  },
+  "addExclude": {
+    "message": "+ Add exclusion"
+  },
+  "addRedirect": {
+    "message": "+ Add redirect"
+  },
+  "redirectFrom": {
+    "message": "From (regex) e.g. ^https://cdn\\.example\\.com/(.*)"
+  },
+  "redirectTo": {
+    "message": "To e.g. http://localhost:8080/\\1"
+  },
+  "lockedRedirects": {
+    "message": "Redirects are a Pro feature. You can type them now; they start working when Pro is on."
+  },
+  "getPro": {
+    "message": "Get Pro"
+  },
+  "tabOnly": {
+    "message": "This tab only"
+  },
+  "tabOnlyTitle": {
+    "message": "Apply only to the tab that is open now (Pro). Switches off when the tab is closed."
+  },
+  "typesLabel": {
+    "message": "Requests:"
+  },
+  "typeAll": {
+    "message": "All"
+  },
+  "typeXhr": {
+    "message": "XHR / fetch only"
+  },
+  "typePage": {
+    "message": "Pages only"
+  },
+  "typeAssets": {
+    "message": "Scripts, CSS, images"
+  },
+  "typeWs": {
+    "message": "WebSocket only"
+  },
+  "typeCustom": {
+    "message": "Custom"
+  },
+  "autoOffLabel": {
+    "message": "Auto-off:"
+  },
+  "autoOffNone": {
+    "message": "Off"
+  },
+  "autoOffLeft": {
+    "message": "Pauses automatically in $1 min.",
+    "placeholders": {
+      "p": {
+        "content": "$1"
+      }
+    }
+  },
+  "proTitle": {
+    "message": "Honest Headers Pro"
+  },
+  "proBody": {
+    "message": "A one-time purchase that adds the tools people pay for in other header extensions. No subscription, no account, no tracking."
+  },
+  "proF1": {
+    "message": "Redirects: send a URL to another one (e.g. production script → your local file)"
+  },
+  "proF2": {
+    "message": "This tab only: test without affecting your other tabs"
+  },
+  "proF3": {
+    "message": "Request types: apply only to XHR/fetch, pages, scripts/CSS/images or WebSocket"
+  },
+  "proF4": {
+    "message": "Auto-off timer: never forget a header that is still switched on"
+  },
+  "proFree": {
+    "message": "Everything else stays free forever: headers, profiles, URL filters, exclusions, import/export and the Alt+Shift+H shortcut."
+  },
+  "proBuy": {
+    "message": "Buy a Pro key (Gumroad)"
+  },
+  "proActivate": {
+    "message": "Activate"
+  },
+  "proOffline": {
+    "message": "The key is checked on this computer only. Nothing is sent anywhere."
+  },
+  "proOn": {
+    "message": "On"
+  },
+  "proOff": {
+    "message": "Not active"
+  },
+  "proBadKey": {
+    "message": "This key is not valid. Please check it and try again."
+  },
+  "proDone": {
+    "message": "Pro is on. Thank you!"
   }
 }

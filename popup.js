@@ -1,5 +1,9 @@
-import { loadState, saveState, activeProfile, newHeader, newFilter, newProfile, uid,
-  isValidHeaderName, isValidHeaderValue, effectiveHeaders, MAX_PROFILES, MAX_ROWS, STORAGE_KEY } from "./lib/state.js";
+import { loadState, saveState, activeProfile, newHeader, newFilter, newRedirect, newProfile, uid, TYPE_PRESETS,
+  isValidHeaderName, isValidHeaderValue, effectiveHeaders, effectiveRedirects, MAX_PROFILES, MAX_ROWS, STORAGE_KEY } from "./lib/state.js";
+import { isPro } from "./lib/license.js";
+
+const FILTER_TABS = ["urlFilters", "excludeFilters"];
+let pro = false;
 
 const t = (key, subs) => chrome.i18n.getMessage(key, subs) || key;
 const $ = (id) => document.getElementById(id);
@@ -47,6 +51,46 @@ function renderCounts() {
   set("countRequestHeaders", effectiveHeaders(p.requestHeaders).length);
   set("countResponseHeaders", effectiveHeaders(p.responseHeaders).length);
   set("countUrlFilters", p.urlFilters.filter((f) => f.enabled && f.pattern.trim()).length);
+  set("countExcludeFilters", p.excludeFilters.filter((f) => f.enabled && f.pattern.trim()).length);
+  set("countRedirects", effectiveRedirects(p.redirects).length);
+}
+
+function redirectRow(r, list) {
+  const row = document.createElement("div");
+  row.className = "row" + (r.enabled ? "" : " disabled");
+  const cb = document.createElement("input");
+  cb.type = "checkbox"; cb.checked = r.enabled; cb.disabled = !pro;
+  cb.addEventListener("change", () => { r.enabled = cb.checked; row.classList.toggle("disabled", !r.enabled); renderCounts(); saveNow(); });
+  const mk = (cls, ph, key) => {
+    const i = document.createElement("input");
+    i.type = "text"; i.className = cls; i.placeholder = t(ph); i.value = r[key]; i.spellcheck = false; i.disabled = !pro;
+    i.addEventListener("input", () => { r[key] = i.value; renderCounts(); saveSoon(); });
+    return i;
+  };
+  row.append(cb, mk("name", "redirectFrom", "from"), mk("value", "redirectTo", "to"), deleteButton(r, list));
+  return row;
+}
+
+function minutesLeft() {
+  return state.autoOffAt ? Math.max(1, Math.ceil((state.autoOffAt - Date.now()) / 60000)) : 0;
+}
+
+async function renderPro() {
+  pro = await isPro(state);
+  const bar = $("proBar");
+  bar.classList.toggle("locked", !pro);
+  bar.querySelectorAll("input, select").forEach((el) => (el.disabled = !pro));
+  const badge = $("proBadge");
+  badge.textContent = pro ? "Pro ✓" : t("getPro");
+  badge.classList.toggle("on", pro);
+  $("tabOnly").checked = pro && typeof state.tabOnly === "number";
+  const p = activeProfile(state);
+  const key = Object.keys(TYPE_PRESETS).find((k) => JSON.stringify(TYPE_PRESETS[k]) === JSON.stringify(p.resourceTypes));
+  $("typeSelect").value = key || "custom";
+  const left = pro && !state.paused ? minutesLeft() : 0;
+  $("autoOff").value = "0";
+  $("autoOffLeft").hidden = !left;
+  if (left) $("autoOffLeft").textContent = t("autoOffLeft", [String(left)]);
 }
 
 function headerRow(r, list) {
@@ -131,11 +175,23 @@ function renderRows() {
   const box = $("rows");
   box.innerHTML = "";
   document.querySelectorAll(".tab").forEach((b) => b.classList.toggle("active", b.dataset.tab === tab));
-  const hints = { requestHeaders: "hintRequest", responseHeaders: "hintResponse", urlFilters: "hintFilters" };
+  const hints = { requestHeaders: "hintRequest", responseHeaders: "hintResponse", urlFilters: "hintFilters", excludeFilters: "hintExclude", redirects: "hintRedirects" };
+  const adds = { urlFilters: "addFilter", excludeFilters: "addExclude", redirects: "addRedirect" };
   $("tabHint").textContent = t(hints[tab]);
-  $("addRow").textContent = tab === "urlFilters" ? t("addFilter") : t("addHeader");
-  $("addRow").disabled = list.length >= MAX_ROWS;
-  for (const r of list) box.appendChild(tab === "urlFilters" ? filterRow(r, list) : headerRow(r, list));
+  $("addRow").textContent = t(adds[tab] || "addHeader");
+  const locked = tab === "redirects" && !pro;
+  $("addRow").disabled = list.length >= MAX_ROWS || locked;
+  if (locked) {
+    const note = document.createElement("p");
+    note.className = "lock-note";
+    note.innerHTML = "";
+    note.append(t("lockedRedirects") + " ");
+    const a = document.createElement("a"); a.href = "#"; a.textContent = t("getPro");
+    a.addEventListener("click", (e) => { e.preventDefault(); openPro(); });
+    note.append(a);
+    box.appendChild(note);
+  }
+  for (const r of list) box.appendChild(tab === "redirects" ? redirectRow(r, list) : FILTER_TABS.includes(tab) ? filterRow(r, list) : headerRow(r, list));
 }
 
 async function renderStatus() {
@@ -147,7 +203,12 @@ async function renderStatus() {
   banner.textContent = err.startsWith("regex:") ? t("badRegex", [err.slice(6)]) : t("applyError", [err]);
 }
 
-function renderAll() {
+function openPro() {
+  chrome.tabs.create({ url: chrome.runtime.getURL("options.html#pro") });
+}
+
+async function renderAll() {
+  await renderPro();
   renderToggle(); renderProfiles(); renderCounts(); renderRows(); renderStatus();
 }
 
@@ -177,7 +238,7 @@ async function init() {
   state = await loadState();
   renderAll();
 
-  $("enabledToggle").addEventListener("change", (e) => { state.paused = !e.target.checked; renderToggle(); saveNow(); });
+  $("enabledToggle").addEventListener("change", (e) => { state.paused = !e.target.checked; if (state.paused) state.autoOffAt = null; renderToggle(); saveNow(); renderPro(); });
   $("profileSelect").addEventListener("change", (e) => { state.activeProfileId = e.target.value; renderAll(); saveNow(); });
   $("addProfile").addEventListener("click", () => {
     if (state.profiles.length >= MAX_PROFILES) return;
@@ -189,7 +250,7 @@ async function init() {
     const src = activeProfile(state);
     const copy = JSON.parse(JSON.stringify(src));
     copy.id = uid(); copy.name = t("copyOf", [src.name]);
-    for (const k of ["requestHeaders", "responseHeaders", "urlFilters"]) copy[k].forEach((r) => (r.id = uid()));
+    for (const k of ["requestHeaders", "responseHeaders", "urlFilters", "excludeFilters", "redirects"]) copy[k].forEach((r) => (r.id = uid()));
     state.profiles.push(copy); state.activeProfileId = copy.id; renderAll(); saveNow();
   });
   $("renameProfile").addEventListener("click", startRename);
@@ -209,13 +270,34 @@ async function init() {
   $("addRow").addEventListener("click", () => {
     const list = activeProfile(state)[tab];
     if (list.length >= MAX_ROWS) return;
-    list.push(tab === "urlFilters" ? newFilter() : newHeader());
+    list.push(tab === "redirects" ? newRedirect() : FILTER_TABS.includes(tab) ? newFilter() : newHeader());
     renderRows(); saveNow();
     const inputs = $("rows").querySelectorAll('input[type="text"]');
-    const target = tab === "urlFilters" ? inputs[inputs.length - 1] : inputs[inputs.length - 2];
+    const target = FILTER_TABS.includes(tab) ? inputs[inputs.length - 1] : inputs[inputs.length - 2];
     if (target) target.focus();
   });
   $("openOptions").addEventListener("click", (e) => { e.preventDefault(); chrome.runtime.openOptionsPage(); });
+  $("proBadge").addEventListener("click", (e) => { e.preventDefault(); openPro(); });
+  $("tabOnly").addEventListener("change", async (e) => {
+    if (!pro) return;
+    if (e.target.checked) {
+      const [cur] = await chrome.tabs.query({ active: true, currentWindow: true });
+      state.tabOnly = cur && typeof cur.id === "number" ? cur.id : null;
+    } else state.tabOnly = null;
+    saveNow(); renderPro();
+  });
+  $("typeSelect").addEventListener("change", (e) => {
+    if (!pro || !(e.target.value in TYPE_PRESETS)) return;
+    activeProfile(state).resourceTypes = [...TYPE_PRESETS[e.target.value]];
+    saveNow();
+  });
+  $("autoOff").addEventListener("change", (e) => {
+    if (!pro) return;
+    const m = Number(e.target.value);
+    state.autoOffAt = m > 0 ? Date.now() + m * 60000 : null;
+    if (m > 0) state.paused = false;
+    saveNow(); renderToggle(); renderPro();
+  });
 
   chrome.storage.onChanged.addListener((changes, area) => {
     if (area !== "local") return;

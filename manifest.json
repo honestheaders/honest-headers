@@ -3,7 +3,7 @@
   "name": "__MSG_extName__",
   "short_name": "Honest Headers",
   "description": "__MSG_extDescription__",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "default_locale": "en",
   "minimum_chrome_version": "121",
   "icons": {
@@ -25,6 +25,20 @@
     "type": "module"
   },
   "options_page": "options.html",
-  "permissions": ["declarativeNetRequest", "storage"],
-  "host_permissions": ["<all_urls>"]
+  "permissions": [
+    "declarativeNetRequest",
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "commands": {
+    "toggle-pause": {
+      "suggested_key": {
+        "default": "Alt+Shift+H"
+      },
+      "description": "__MSG_cmdToggle__"
+    }
+  }
 }

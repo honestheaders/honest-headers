@@ -16,6 +16,27 @@
       </div>
     </header>
 
+    <section class="card pro" id="pro">
+      <h2><span data-i18n="proTitle"></span> <span class="badge" id="proState"></span></h2>
+      <p data-i18n="proBody"></p>
+      <ul class="pro-list">
+        <li data-i18n="proF1"></li>
+        <li data-i18n="proF2"></li>
+        <li data-i18n="proF3"></li>
+        <li data-i18n="proF4"></li>
+      </ul>
+      <p class="muted" data-i18n="proFree"></p>
+      <div class="actions">
+        <a class="btn primary" id="buyPro" target="_blank" rel="noopener" data-i18n="proBuy"></a>
+      </div>
+      <div class="keyrow">
+        <input type="text" id="proKey" placeholder="HHPRO-XXXX-XXXX-XXXX-XXXX" spellcheck="false" autocomplete="off">
+        <button class="btn" id="proActivate" data-i18n="proActivate"></button>
+      </div>
+      <p id="proResult" class="result" role="status"></p>
+      <p class="muted" data-i18n="proOffline"></p>
+    </section>
+
     <section class="card">
       <h2 data-i18n="importTitle"></h2>
       <p data-i18n="importBody"></p>
