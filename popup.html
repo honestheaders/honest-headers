@@ -29,10 +29,38 @@
     <button class="icon-btn danger" id="deleteProfile" data-i18n-title="deleteProfile">🗑</button>
   </section>
 
+  <section class="pro-bar" id="proBar">
+    <label class="opt" data-i18n-title="tabOnlyTitle"><input type="checkbox" id="tabOnly"> <span data-i18n="tabOnly"></span></label>
+    <label class="opt"><span data-i18n="typesLabel"></span>
+      <select id="typeSelect">
+        <option value="all" data-i18n="typeAll"></option>
+        <option value="xhr" data-i18n="typeXhr"></option>
+        <option value="page" data-i18n="typePage"></option>
+        <option value="assets" data-i18n="typeAssets"></option>
+        <option value="websocket" data-i18n="typeWs"></option>
+        <option value="custom" data-i18n="typeCustom" hidden></option>
+      </select>
+    </label>
+    <label class="opt"><span data-i18n="autoOffLabel"></span>
+      <select id="autoOff">
+        <option value="0" data-i18n="autoOffNone"></option>
+        <option value="15">15 min</option>
+        <option value="30">30 min</option>
+        <option value="60">1 h</option>
+        <option value="120">2 h</option>
+        <option value="480">8 h</option>
+      </select>
+    </label>
+    <a href="#" class="pro-badge" id="proBadge"></a>
+  </section>
+  <p class="hint pro-left" id="autoOffLeft" hidden></p>
+
   <nav class="tabs" role="tablist">
     <button class="tab active" data-tab="requestHeaders" role="tab"><span data-i18n="tabRequest"></span> <b class="count" id="countRequestHeaders"></b></button>
     <button class="tab" data-tab="responseHeaders" role="tab"><span data-i18n="tabResponse"></span> <b class="count" id="countResponseHeaders"></b></button>
     <button class="tab" data-tab="urlFilters" role="tab"><span data-i18n="tabFilters"></span> <b class="count" id="countUrlFilters"></b></button>
+    <button class="tab" data-tab="excludeFilters" role="tab"><span data-i18n="tabExclude"></span> <b class="count" id="countExcludeFilters"></b></button>
+    <button class="tab" data-tab="redirects" role="tab"><span data-i18n="tabRedirects"></span> <b class="count" id="countRedirects"></b> <i class="pro-tag">Pro</i></button>
   </nav>
 
   <p class="hint" id="tabHint"></p>

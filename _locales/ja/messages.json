@@ -191,5 +191,121 @@
   },
   "importSkipped": {
     "message": "ModHeader独自の設定(除外フィルターやCookieのルールなど)の一部は読み込めませんでした。使う前にプロファイルの中身を確認してください。"
+  },
+  "cmdToggle": {
+    "message": "すべてのヘッダー変更をオン/オフ"
+  },
+  "tabExclude": {
+    "message": "除外"
+  },
+  "tabRedirects": {
+    "message": "リダイレクト"
+  },
+  "hintExclude": {
+    "message": "ここに一致するURLには何も適用しません(正規表現)。ほかの設定より優先されます。"
+  },
+  "hintRedirects": {
+    "message": "一致するリクエストを別のURLへ送ります。( ) で囲んだ部分は \\1, \\2 で使えます。行き先がまた一致して無限ループにならないよう注意してください。"
+  },
+  "addExclude": {
+    "message": "+ 除外を追加"
+  },
+  "addRedirect": {
+    "message": "+ リダイレクトを追加"
+  },
+  "redirectFrom": {
+    "message": "元のURL(正規表現) 例: ^https://cdn\\.example\\.com/(.*)"
+  },
+  "redirectTo": {
+    "message": "行き先 例: http://localhost:8080/\\1"
+  },
+  "lockedRedirects": {
+    "message": "リダイレクトはPro版の機能です。"
+  },
+  "getPro": {
+    "message": "Pro版にする"
+  },
+  "tabOnly": {
+    "message": "このタブだけ"
+  },
+  "tabOnlyTitle": {
+    "message": "今開いているタブだけに適用します(Pro)。タブを閉じると自動で解除されます。"
+  },
+  "typesLabel": {
+    "message": "対象:"
+  },
+  "typeAll": {
+    "message": "すべて"
+  },
+  "typeXhr": {
+    "message": "XHR・fetchだけ"
+  },
+  "typePage": {
+    "message": "ページ(HTML)だけ"
+  },
+  "typeAssets": {
+    "message": "スクリプト・CSS・画像"
+  },
+  "typeWs": {
+    "message": "WebSocketだけ"
+  },
+  "typeCustom": {
+    "message": "カスタム"
+  },
+  "autoOffLabel": {
+    "message": "自動オフ:"
+  },
+  "autoOffNone": {
+    "message": "なし"
+  },
+  "autoOffLeft": {
+    "message": "あと $1 分で自動的に一時停止します。",
+    "placeholders": {
+      "p": {
+        "content": "$1"
+      }
+    }
+  },
+  "proTitle": {
+    "message": "Honest Headers Pro"
+  },
+  "proBody": {
+    "message": "ほかのヘッダー拡張では有料の機能を、買い切りで使えるようにします。月額なし、アカウント登録なし、追跡なし。"
+  },
+  "proF1": {
+    "message": "リダイレクト: URLを別のURLへ送る(例: 本番のスクリプト → 手元のファイル)"
+  },
+  "proF2": {
+    "message": "このタブだけ: ほかのタブに影響させずに試せる"
+  },
+  "proF3": {
+    "message": "対象の種類: XHR・fetchだけ、ページだけ、スクリプト・CSS・画像だけ、WebSocketだけ"
+  },
+  "proF4": {
+    "message": "自動オフのタイマー: ヘッダーを付けっぱなしにする事故を防ぐ"
+  },
+  "proFree": {
+    "message": "ヘッダー編集、プロファイル、URLフィルター、除外、読み込み/書き出し、Alt+Shift+H のショートカットは、ずっと無料です。"
+  },
+  "proBuy": {
+    "message": "Proキーを買う(BOOTH)"
+  },
+  "proActivate": {
+    "message": "有効にする"
+  },
+  "proOffline": {
+    "message": "キーはこのパソコンの中だけで確認します。どこにも送信しません。"
+  },
+  "proOn": {
+    "message": "有効"
+  },
+  "proOff": {
+    "message": "未登録"
+  },
+  "proBadKey": {
+    "message": "キーが正しくありません。もう一度確かめて入力してください。"
+  },
+  "proDone": {
+    "message": "Pro版が有効になりました。ありがとうございます!"
   }
 }

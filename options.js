@@ -1,5 +1,6 @@
 import { loadState, saveState, MAX_PROFILES } from "./lib/state.js";
 import { parseImport, exportState } from "./lib/importers.js";
+import { isPro, normalizeKey, BUY_URL } from "./lib/license.js";
 
 const t = (key, subs) => chrome.i18n.getMessage(key, subs) || key;
 const $ = (id) => document.getElementById(id);
@@ -51,3 +52,27 @@ $("exportBtn").addEventListener("click", async () => {
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
+
+// ---- Pro ----
+$("buyPro").href = BUY_URL;
+async function renderProState() {
+  const state = await loadState();
+  const ok = await isPro(state);
+  const el = $("proState");
+  el.textContent = ok ? t("proOn") : t("proOff");
+  el.className = "badge" + (ok ? " on" : "");
+  if (ok) $("proKey").value = state.proKey;
+}
+$("proActivate").addEventListener("click", async () => {
+  const key = normalizeKey($("proKey").value);
+  const state = await loadState();
+  const test = { ...state, proKey: key };
+  const r = $("proResult");
+  if (!(await isPro(test))) { r.textContent = t("proBadKey"); r.className = "result err"; return; }
+  state.proKey = key;
+  await saveState(state);
+  r.textContent = t("proDone"); r.className = "result ok";
+  renderProState();
+});
+renderProState();
+if (location.hash === "#pro") document.getElementById("pro").scrollIntoView();
