@@ -36,6 +36,11 @@ Honest Headers only uses Chrome's built-in [`declarativeNetRequest`](https://dev
 - `alarms` – only for the Pro auto-off timer
 - `<all_urls>` host access – Chrome requires this so header rules can apply to the sites you choose. Limit it with URL filters.
 
+## Guides
+
+- [How to change HTTP headers in Chrome](https://honestheaders.github.io/honest-guide/en/modify-http-headers-in-chrome/)
+- [Security headers checklist: the 7 to add and the 5 to remove](https://honestheaders.github.io/honest-guide/en/security-headers-checklist/)
+
 ## Privacy
 
 See [PRIVACY.md](PRIVACY.md).
