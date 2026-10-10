@@ -3,7 +3,7 @@
     "message": "Honest Headers – Modify HTTP Headers"
   },
   "extDescription": {
-    "message": "Add, change or remove HTTP request and response headers. No tracking, no data collection, open source. Imports ModHeader profiles."
+    "message": "Add, change or remove HTTP request and response headers. Few permissions, never reads page content, no tracking, open source."
   },
   "active": {
     "message": "Active"
@@ -307,5 +307,8 @@
   },
   "proDone": {
     "message": "Pro is on. Thank you!"
+  },
+  "rateStore": {
+    "message": "Find it useful? Rate it on the Chrome Web Store"
   }
 }

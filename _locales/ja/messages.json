@@ -3,7 +3,7 @@
     "message": "Honest Headers – HTTPヘッダー編集"
   },
   "extDescription": {
-    "message": "HTTPリクエスト/レスポンスヘッダーを追加・変更・削除。追跡なし、データ収集なし、ソース公開。ModHeaderのプロファイルを読み込めます。"
+    "message": "HTTPリクエスト/レスポンスヘッダーを追加・変更・削除。少ない権限で動き、ページの中身は読みません。追跡なし、データ収集なし、ソース公開。"
   },
   "active": {
     "message": "有効"
@@ -307,5 +307,8 @@
   },
   "proDone": {
     "message": "Pro版が有効になりました。ありがとうございます!"
+  },
+  "rateStore": {
+    "message": "役に立ったら、Chromeウェブストアで評価してください"
   }
 }
